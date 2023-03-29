@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 
 const FormTodo = props => {
-  const [description, setDescription] = useState("");
+  const [label, setDescription] = useState("");
   const handleSubmit = e => {
 	e.preventDefault();
-	console.log(description);
+	
 	setDescription("");
 
 	const {handleAddItem} = props;
@@ -14,7 +14,7 @@ const FormTodo = props => {
 		handleAddItem({
 			done: false,
 			id: (+new Date ()).toString(),
-			description
+			label
 		});
 		setDescription("");
 	
@@ -27,12 +27,12 @@ const FormTodo = props => {
           <input
             type="text"
             className="text"
-            value={description}
+            value={label}
             onChange={e => setDescription(e.target.value)}
           />
           <button
             className="button purple"
-            disabled={description ? "" : "disabled"}
+            disabled={label ? "" : "disabled"}
           >
             Add
           </button>
